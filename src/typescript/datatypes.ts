@@ -52,3 +52,48 @@ let mixedArray : any[];
 mixedArray = ["hello", 1, 3,4,5, null, undefined, Symbol()]
 
 
+
+//  ------------- Object Types -------------------
+
+let pp : object;
+
+ pp = new Object({name:33, bb:"kamal"})
+
+
+function greet(person:{name:string, age:number}){
+
+    return person;
+}
+
+let person :{name:string, age: number} ;  // decalre type with object name and type
+person  = {name: "kamal", age:55};
+
+greet(person);
+
+
+function greet1(persons:object){
+    return persons;
+}
+
+greet1(person);
+
+
+
+// Type of key
+
+type Point = { x: number; y: number };
+type P = keyof Point;
+
+type Arrayish = { [n: number]: unknown };
+type A = keyof Arrayish;
+
+type Mapish = { [k: string]: boolean };
+type M = keyof Mapish;
+
+type  userDefinttypeString  = "jamal";
+type  userDefinttypNumber  = 55;
+type  userDefinttypeArray  = [2,3,4,"heello", null, undefined, boolean, object];
+type  objetcreate = {name: "kamal", age: 33, };
+
+
+type identification  = {name:"ksamal", address:{location:"a",  house:22}, distict:'zaipur' }
