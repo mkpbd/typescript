@@ -96,3 +96,9 @@ function doSomething(x: string | null) {
     // No error
     console.log(x!.toFixed());
   }
+
+
+
+
+
+  
