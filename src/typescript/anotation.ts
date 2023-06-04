@@ -136,3 +136,76 @@ function welcomePeople(x: string[] | string) {
 function getFirstThree(x: number[] | string) {
   return x.slice(0, 3);
 }
+
+
+//=========================== Type Aliases ======================
+
+/**
+ * 
+ * We’ve been using object types and union types by writing them directly in type annotations. 
+ * This is convenient, but it’s common to want to use the same type more than once and refer to it by a single name.
+ * 
+ */
+
+
+type Points = {
+  x: number;
+  y: number;
+};
+ 
+// Exactly the same as the earlier example
+function printCoords(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+ 
+printCoords({ x: 100, y: 100 });
+
+
+type ID = number | string;
+
+type UserInputSanitizedString = string;
+ 
+function sanitizeInput(str: string): UserInputSanitizedString {
+  return (str.toUpperCase());
+}
+ 
+// Create a sanitized input
+let userInput = sanitizeInput("Hello bangaldesh");
+ 
+// Can still be re-assigned with a string though
+userInput = "new input";
+
+
+/// ================================================= Interfaces ========================================================================
+
+//===================== An interface declaration is another way to name an object type: ===============
+interface Pointes {
+  x: number;
+  y: number;
+}
+ 
+function printCoorded(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+ 
+printCoorded({ x: 100, y: 100 });
+
+
+//============================ Interface ===================
+// Extending an interface
+
+interface Animal {
+  name: string;
+}
+
+interface Bear extends Animal {
+  honey: boolean;
+}
+
+
+
+// const bear = new getBear();
+// bear.name;
+// bear.honey;
