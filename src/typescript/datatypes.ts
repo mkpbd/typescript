@@ -39,6 +39,19 @@ symbols =  Symbol();
 // symbols = 'hello';
 
 
+// Any Types 
+
+let anything : any;
+anything = "jamal";
+anything = 55;
+anything = null;
+anything = [];
+anything = Symbol();
+
+anything = {name:'a', age:44};
+
+// we should avoid any type becuse we need a strongly type for our use
+
 // ---------------- Array Types  ---------------------
 let stringArrayes : string[];
 
@@ -97,3 +110,17 @@ type  objetcreate = {name: "kamal", age: 33, };
 
 
 type identification  = {name:"ksamal", address:{location:"a",  house:22}, distict:'zaipur' }
+
+
+
+
+//-------------- hey can be named by using either an interface -------------
+
+interface Person {
+    name: string;
+    age: number;
+  }
+   
+  function greet3(person: Person) {
+    return "Hello " + person.name;
+  }
