@@ -401,3 +401,165 @@ interface DB {
 function noop() {
     return;
 }
+
+
+// ============== unknown  =============
+
+function f1(a: any) {
+    a.b(); // OK
+  }
+
+
+  function f2(a: unknown) {
+   // a.b();
+ // 'a' is of type 'unknown'.
+  }
+
+
+
+  function safeParse(s: string): unknown {
+    return JSON.parse(s);
+  }
+   
+  // Need to be careful with 'obj'!
+ // const obj = safeParse(someRandomString);
+
+
+ // ============never=================
+
+ /***
+  * 
+  * The never type represents values which are never observed. In a return type, this means that the function throws an exception or terminates execution of the program.
+
+never also appears when TypeScript determines there’s nothing left in a union.
+  * 
+  */
+
+
+
+function fnUnion(x: string | number) {
+    if (typeof x === "string") {
+      // do something
+    } else if (typeof x === "number") {
+      // do something else
+    } else {
+      x; // has type 'never'!
+    }
+  }
+
+
+
+  //=============== Function ====================
+
+
+  // The global type Function describes properties like bind, call, apply, and others present on all function values in JavaScript. It also has the special property that values of type Function can always be called; these calls return any:
+
+function doSomething(f: Function) {
+  return f(1, 2, 3);
+}
+
+
+//====================== Rest Parameters and Arguments ==========================
+
+/***
+ * 
+ * n addition to using optional parameters or overloads to make functions that can accept a variety of fixed argument counts, we can also define functions that take an unbounded number of arguments using rest parameters.
+ * A rest parameter appears after all other parameters, and uses the ... syntax:
+ * 
+ */
+
+function multiply(n: number, ...m: number[]) {
+    return m.map((x) => n * x);
+  }
+  // 'a' gets value [10, 20, 30, 40]
+  const aa = multiply(10, 1, 2, 3, 4);
+
+
+  //========================Rest Arguments==================
+// Conversely, we can provide a variable number of arguments from an iterable object (for example, an array) using the spread syntax. For example, the push method of arrays takes any number of arguments:
+
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+arr1.push(...arr2);
+
+
+
+
+// Inferred as 2-length tuple
+const args = [8, 5] as const;
+// OK
+const angle = Math.atan2(...args);
+
+
+
+//===================== Parameter Destructuring =======================
+
+function sum({ a, b, c }) {
+    console.log(a + b + c);
+  }
+  sum({ a: 10, b: 3, c: 9 });
+
+
+ // The type annotation for the object goes after the destructuring syntax:
+
+function sums({ a, b, c }: { a: number; b: number; c: number }) {
+  console.log(a + b + c);
+}
+
+
+//This can look a bit verbose, but you can use a named type here as well:
+
+// Same as prior example
+type ABC = { a: number; b: number; c: number };
+function sum1({ a, b, c }: ABC) {
+  console.log(a + b + c);
+}
+
+
+///======================== Assignability of Functions ===============
+
+
+/***
+ * 
+ * 
+ * Return type    void
+ * The void return type for functions can produce some unusual, but expected behavior.
+ * Contextual typing with a return type of void does not force functions to not return something. Another way to say this is a contextual function type with a void return type (type voidFunc = () => void), when implemented, can return any other value, but it will be ignored.
+ * Thus, the following implementations of the type () => void are valid:
+ * 
+ */
+
+
+type voidFunc = () => void;
+ 
+const f11: voidFunc = () => {
+  return true;
+};
+ 
+const f22: voidFunc = () => true;
+ 
+const f33: voidFunc = function () {
+  return true;
+};
+
+const v1 = f11();
+ 
+const v2 = f22();
+ 
+const v3 = f33();
+
+
+const src = [1, 2, 3];
+const dst = [0];
+ 
+src.forEach((el) => dst.push(el));
+
+function f23(): void {
+    // @ts-expect-error
+    return true;
+  }
+   
+  const f32 = function (): void {
+    // @ts-expect-error
+    return true;
+  };
