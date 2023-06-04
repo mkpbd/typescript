@@ -1,27 +1,37 @@
 "use strict";
-// string 
+// string  Type Annotations on Variables
 let firstName;
 firstName = "mostofa kamal passa";
-// number 
+// number  Type Annotations on Variables
 let integerNumber;
 integerNumber = 40;
 // integerNumber = '';
-// boolean 
+// boolean  Type Annotations on Variables
 let booleans;
 booleans = true;
 booleans = false;
 // booleans = 1;
-// null 
+// null  Type Annotations on Variables
 let nullbles;
 // nullbles = "abc"
-// undefined
+// undefined Type Annotations on Variables
 let undefinedbles;
 undefinedbles = undefined;
 // undefinedbles = '';
+// symbole Type Annotations on Variables
 let symbols;
 symbols = Symbol();
 // symbols = 'hello';
-// ---------------- Array Types  ---------------------
+// Any   Type Annotations on Variables
+let anything;
+anything = "jamal";
+anything = 55;
+anything = null;
+anything = [];
+anything = Symbol();
+anything = { name: 'a', age: 44 };
+// we should avoid any type becuse we need a strongly type for our use
+// ---------------- Array  Type Annotations on Variables  ---------------------
 let stringArrayes;
 stringArrayes = ["hello", "bangla", "desh"];
 let numberArrayes;
@@ -41,3 +51,6 @@ function greet1(persons) {
     return persons;
 }
 greet1(person);
+function greet3(person) {
+    return "Hello " + person.name;
+}
