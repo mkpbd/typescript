@@ -28,4 +28,13 @@ function greet(person: { name: string; age: number }) {
 
   // or a type alias: using for object type pass
 
-  
+  type PersonAlis = {
+    name: string;
+    age: number;
+  };
+   
+  function greetAlisType(person: PersonAlis) {
+    return "Hello " + person.name;
+  }
+
+  greetAlisType({})
