@@ -40,3 +40,4 @@ var fn = 26.218; // 26.218
 //let fbb: bigint = 100n // bigint
 //let gbb: 100n = 100n // 100n
 //let hbb: bigint = 100 // Error TS2322: Type '100' is not assignable  to type 'bigint'.
+

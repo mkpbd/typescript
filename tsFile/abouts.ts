@@ -47,3 +47,20 @@ let fn: 26.218 = 26.218 // 26.218
 //let fbb: bigint = 100n // bigint
 //let gbb: 100n = 100n // 100n
 //let hbb: bigint = 100 // Error TS2322: Type '100' is not assignable  to type 'bigint'.
+
+
+//string is the set of all strings and the things you can do with them like concatenate
+// (+), slice (.slice), and so on. Let’s see some examples:
+let aS = 'hello' // string
+var bS = 'billy' // string
+const cS = '!' // '!'
+let dS = a + ' ' + b + c // string
+let eS: string = 'zoom' // string
+let fS: 'john' = 'john' // 'john'
+// let gS: 'john' = 'zoe' // Error TS2322: Type "zoe" is not assignable to type "john".
+
+/// symbol 
+
+// let aSM = Symbol('a') // symbol
+// let bSM: symbol = Symbol('b') // symbol
+// var cSM = a === b // boolean
