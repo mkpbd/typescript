@@ -76,3 +76,21 @@ let bo = {
     d: 'f'
   }
 }
+
+//======= Type Inference When Declaring Objects with const ======
+
+let airplaneSeatingAssignments: {
+  [seatNumber: string]: string
+} = {
+  '34D': 'Boris Cherny',
+  '34E': 'Bill Gates'
+}
+
+let user: {
+  readonly firstName: string
+} = {
+  firstName: 'abby'
+}
+user.firstName // string
+  //user.firstName =
+  //'abbey with an e' // Error TS2540: Cannot assign to 'firstName' because it is a read-only property.
