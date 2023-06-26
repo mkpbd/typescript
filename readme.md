@@ -518,3 +518,43 @@ function doSomething() {
     console.log('hello world');
 }
 ```
+
+![1687801923766](image/readme/1687801923766.png)
+
+**Enums**
+Enums are a way to enumerate the possible values for a type. They are unordered data structures that map keys to values. Think of them like objects where the keys are
+
+```typescript
+enum Language {
+   English,
+   Spanish,
+   Russian
+}
+enum Languages {
+   English = 0,
+   Spanish = 1,
+   Russian = 2
+}
+```
+
+To retrieve a value from an enum, you access it with either dot or bracket notation— just like you would to get a value from a regular object:
+
+```typescript
+let myFirstLanguage = Language.Russian // Language
+let mySecondLanguage = Language['English'] // Language
+enum Language1 {
+  English = 100,
+  Spanish = 200 + 300,
+  Russian // TypeScript infers 501 (the next number after 500)
+}
+enum Color {
+    Red = '#c10000',
+    Blue = '#007ac1',
+    Pink = 0xc10050, // A hexadecimal literal
+    White = 255 // A decimal literal
+}
+let red = Color.Red // Color
+let pink = Color.Pink // Color
+
+
+```

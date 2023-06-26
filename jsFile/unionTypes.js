@@ -108,7 +108,7 @@ function bf() {
     return undefined;
 }
 // (c) A function that returns void
-function c() {
+function cv() {
     let a = 2 + 2;
     let b = a * a;
 }
@@ -125,3 +125,47 @@ function ef() {
 function doSomething() {
     console.log('hello world');
 }
+//=========================== Enums ============
+var Language;
+(function (Language) {
+    Language[Language["English"] = 0] = "English";
+    Language[Language["Spanish"] = 1] = "Spanish";
+    Language[Language["Russian"] = 2] = "Russian";
+})(Language || (Language = {}));
+var Languages;
+(function (Languages) {
+    Languages[Languages["English"] = 0] = "English";
+    Languages[Languages["Spanish"] = 1] = "Spanish";
+    Languages[Languages["Russian"] = 2] = "Russian";
+})(Languages || (Languages = {}));
+let myFirstLanguage = Language.Russian; // Language
+let mySecondLanguage = Language['English']; // Language
+var Language2;
+(function (Language2) {
+    Language2[Language2["English"] = 100] = "English";
+    Language2[Language2["Spanish"] = 500] = "Spanish";
+    Language2[Language2["Russian"] = 501] = "Russian"; // TypeScript infers 501 (the next number after 500)
+})(Language2 || (Language2 = {}));
+var Colors;
+(function (Colors) {
+    Colors["Red"] = "#c10000";
+    Colors["Blue"] = "#007ac1";
+    Colors[Colors["Pink"] = 12648528] = "Pink";
+    Colors[Colors["White"] = 255] = "White"; // A decimal literal
+})(Colors || (Colors = {}));
+let red = Colors.Red; // Colors
+let pink = Colors.Pink; // Colors
+let cco = Colors[0]; // string
+let dco = Colors[6]; // string (!!!)
+// Accessing a valid enum key
+let ae = 0 /* English */; // Language
+function flip(f) {
+    return 'flipped it';
+}
+flip(1 /* Chair */); // 'flipped it'
+flip(2 /* Cup */); // 'flipped it'
+function flip1(f) {
+    return 'flipped it';
+}
+flip1("Chair" /* Chair */); // 'flipped it'
+flip1("Cup" /* Cup */);

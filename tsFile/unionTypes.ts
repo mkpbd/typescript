@@ -164,7 +164,7 @@ function bf() {
     return undefined
 }
 // (c) A function that returns void
-function c() {
+function cv() {
     let a = 2 + 2
     let b = a * a
 }
@@ -182,3 +182,80 @@ function ef() {
 function doSomething() {
     console.log('hello world');
 }
+
+
+//=========================== Enums ============
+enum Language {
+    English,
+    Spanish,
+    Russian
+}
+
+enum Languages {
+    English = 0,
+    Spanish = 1,
+    Russian = 2
+}
+let myFirstLanguage = Language.Russian // Language
+let mySecondLanguage = Language['English'] // Language
+
+enum Language2 {
+    English = 100,
+    Spanish = 200 + 300,
+    Russian // TypeScript infers 501 (the next number after 500)
+}
+enum Colors {
+    Red = '#c10000',
+    Blue = '#007ac1',
+    Pink = 0xc10050, // A hexadecimal literal
+    White = 255 // A decimal literal
+}
+let red = Colors.Red // Colors
+let pink = Colors.Pink // Colors
+
+let cco = Colors[0] // string
+let dco = Colors[6] // string (!!!)
+
+
+const enum Languagee {
+    English,
+    Spanish,
+    Russian
+}
+// Accessing a valid enum key
+let ae = Languagee.English // Language
+// Accessing an invalid enum key
+//let be = Languagee.Tagalog // Error TS2339: Property 'Tagalog' does not exist
+// on type 'typeof Language'.
+// Accessing a valid enum value
+// let ce = Languagee[0] // Error TS2476: A const enum member can only be
+// accessed using a string literal.
+// Accessing an invalid enum value
+
+
+const enum Flippable {
+    Burger,
+    Chair,
+    Cup,
+    Skateboard,
+    Table
+}
+function flip(f: Flippable) {
+    return 'flipped it'
+}
+flip(Flippable.Chair) // 'flipped it'
+flip(Flippable.Cup) // 'flipped it'
+//flip(12) // 'flipped it' (!!!)
+
+const enum Flippable1 {
+    Burger = 'Burger',
+    Chair = 'Chair',
+    Cup = 'Cup',
+    Skateboard = 'Skateboard',
+    Table = 'Table'
+}
+function flip1(f: Flippable1) {
+    return 'flipped it'
+}
+flip1(Flippable1.Chair) // 'flipped it'
+flip1(Flippable1.Cup)
