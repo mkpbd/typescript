@@ -134,3 +134,51 @@ let moreTrainFares: ([number] | [number, number])[] = [
 let friends: [string, ...string[]] = ['Sara', 'Tali', 'Chloe', 'Claire']
 // A heterogeneous list
 let list: [number, boolean, ...string[]] = [1, false, 'a', 'b', 'c']
+
+// ======================= Read-only arrays and tuples ===========
+let as: readonly number[] = [1, 2, 3] // readonly number[]
+let bs: readonly number[] = as.concat(4) // readonly number[]
+let three = bs[2] // number
+// as[4] = 5 // Error TS2542: Index signature in type
+// 'readonly number[]' only permits reading.
+// as.push(6) // Error TS2339: Property 'push' does not
+// exist on type 'readonly number[]'.
+
+type A = readonly string[] // readonly string[]
+type B = ReadonlyArray<string> // readonly string[]
+type C = Readonly<string[]> // readonly string[]
+type D = readonly [number, string] // readonly [number, string]
+type E = Readonly<[number, string]> // readonly [number, string]
+
+//============= null, undefined, void, and never ==============
+
+// (a) A function that returns a number or null
+function af(x: number) {
+    if (x < 10) {
+        return x
+    }
+    return null
+}
+// (b) A function that returns undefined
+function bf() {
+    return undefined
+}
+// (c) A function that returns void
+function c() {
+    let a = 2 + 2
+    let b = a * a
+}
+// (d) A function that returns never
+function df() {
+    throw TypeError('I always error')
+}
+// (e) Another function that returns never
+function ef() {
+    while (true) {
+        doSomething()
+    }
+}
+
+function doSomething() {
+    console.log('hello world');
+}
