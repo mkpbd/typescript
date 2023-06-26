@@ -4,32 +4,32 @@ function squareOf(n) {
 }
 squareOf(2); // evaluates to 4
 // any Tyes 
-var ab = 666; // any
-var ba = ['danger']; // any
-var ca = a + b; // any
+let ab = 666; // any
+let ba = ['danger']; // any
+let ca = a + b; // any
 // unknown types
-var a1 = 30; // unknown
-var b1 = a1 === 123; // boolean
+let a1 = 30; // unknown
+let b1 = a1 === 123; // boolean
 // let c1 = a1 + 10 // Error TS2571: Object is of type 'unknown'.
 if (typeof a1 === 'number') {
-    var d = a1 + 10; // number
+    let d = a1 + 10; // number
 }
 // boolean 
 //The boolean type has two values: true and false. You can compare them (with ==,
 //  ===, ||, &&, and ?), negate them (with !), and not much else. Use boolean like this:
-var a2 = true; // boolean
+let a2 = true; // boolean
 var b2 = false; // boolean
-var c2 = true; // true
-var d2 = true; // boolean
-var e2 = true; // true
+const c2 = true; // true
+let d2 = true; // boolean
+let e2 = true; // true
 // let f2: true = false // Error TS2322: Type 'false' is not assignable  to type 'true'.
 // number
-var an = 1234; // number
+let an = 1234; // number
 var bn = Infinity * 0.10; // number
-var cn = 5678; // 5678
-var dn = an < bn; // boolean
-var en = 100; // number
-var fn = 26.218; // 26.218
+const cn = 5678; // 5678
+let dn = an < bn; // boolean
+let en = 100; // number
+let fn = 26.218; // 26.218
 // let gn: 26.218 = 10 // Error TS2322: Type '10' is not assignable  to type '26.218'.
 // bigint
 //let abb = 1234n // bigint
@@ -40,4 +40,16 @@ var fn = 26.218; // 26.218
 //let fbb: bigint = 100n // bigint
 //let gbb: 100n = 100n // 100n
 //let hbb: bigint = 100 // Error TS2322: Type '100' is not assignable  to type 'bigint'.
-
+//string is the set of all strings and the things you can do with them like concatenate
+// (+), slice (.slice), and so on. Let’s see some examples:
+let aS = 'hello'; // string
+var bS = 'billy'; // string
+const cS = '!'; // '!'
+let dS = a + ' ' + b + c; // string
+let eS = 'zoom'; // string
+let fS = 'john'; // 'john'
+// let gS: 'john' = 'zoe' // Error TS2322: Type "zoe" is not assignable to type "john".
+/// symbol 
+let aSM = Symbol('a'); // symbol
+let bSM = Symbol('b'); // symbol
+var cSM = aSM === bSM; // boolean

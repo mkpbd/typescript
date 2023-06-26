@@ -243,6 +243,8 @@ Structural typing
 A style of programming where you just care that an object has certain properties, and not what its name is (nominal typing). Also called duck typing in some languages (or, not judging a book by its cover).
 
 ```typescript
+
+
 let a = {
 b: 'x'
 } // {b: string}
@@ -253,12 +255,28 @@ c: {
    }
 }
 
+
+```
+
+##### Type Inference When Declaring Objects with const
+
+What would have happened if we’d used const to declare the object instead?
+
+```typescript
+let a: {b: number} = {
+b: 12
+} // {b: number}
+```
+
+Object literal syntax says,
+
+```typescript
 let c: {
-firstName: string
-lastName: string
+ firstName: string
+ lastName: string
 } = {
-firstName: 'john',
-lastName: 'barrowman'
+ firstName: 'john',
+ lastName: 'barrowman'
 }
 class Person {
 constructor(
@@ -268,4 +286,27 @@ public lastName: string
 ) {}
 }
 c = new Person('matt', 'smith') // OK
+```
+
+Can you tell TypeScript that something is optional, or that there might be more properties than you planned for? You bet:
+
+```typescript
+let a: {
+b: number
+c?: string
+[key: number]: boolean
+}
+```
+
+Index Signatures
+
+The [key: T]: U syntax is called an index signature, and this is the way you tell TypeScript that the given object might contain more keys. The way to read it is, “For this object, all keys of type T must have values of type U.” Index signatures let you safely add more keys to an object, in addition to any keys that you explicitly declared.
+
+```typescript
+let airplaneSeatingAssignments: {
+ [seatNumber: string]: string
+} = {
+'34D': 'Boris Cherny',
+'34E': 'Bill Gates'
+}
 ```
