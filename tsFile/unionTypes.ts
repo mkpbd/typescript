@@ -102,3 +102,35 @@ gr.push('red') // (string | number)[]
 let hr: number[] = [] // number[]
 hr.push(1) // number[]
 // hr.push('red') // Error TS2345: Argument of type '"red"' is not assignable to parameter of type 'number'.
+
+
+function buildArray() {
+    let a = [] // any[]
+    a.push(1) // number[]
+    a.push('x') // (string | number)[]
+    return a
+}
+let myArray = buildArray() // (string | number)[]
+//myArray.push(true) // Error 2345: Argument of type 'true' is not
+// assignable to parameter of type 'string | number'.
+
+
+//============== Tuples =============================
+let at: [number] = [1]
+// A tuple of [first name, last name, birth year]
+let bt: [string, string, number] = ['malcolm', 'gladwell', 1963]
+//bt = ['queen', 'elizabeth', 'ii', 1926] // Error TS2322: Type 'string' is no assignable to type 'number'.// An array of train fares, which sometimes vary depending on direction
+let trainFares: [number, number?][] = [
+    [3.75],
+    [8.25, 7.70],
+    [10.50]
+]
+// Equivalently:
+let moreTrainFares: ([number] | [number, number])[] = [
+    // ...
+]
+
+// A list of strings with at least 1 element
+let friends: [string, ...string[]] = ['Sara', 'Tali', 'Chloe', 'Claire']
+// A heterogeneous list
+let list: [number, boolean, ...string[]] = [1, false, 'a', 'b', 'c']

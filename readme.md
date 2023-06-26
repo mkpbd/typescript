@@ -416,3 +416,61 @@ let hr: number[] = [] // number[]
 hr.push(1) // number[]
 // hr.push('red') // Error TS2345: Argument of type '"red"' is not assignable to parameter of type 'number'.
 ```
+
+Like with objects, creating arrays with const won’t hint to TypeScript to infer their types more narrowly. That’s why TypeScript inferred both d and e to be arrays of     **number | string.**
+
+```typescript
+function buildArray() {
+   let a = [] // any[]
+   a.push(1) // number[]
+   a.push('x') // (string | number)[]
+   return a
+}
+let myArray = buildArray() // (string | number)[]
+myArray.push(true) // Error 2345: Argument of type 'true' is not
+// assignable to parameter of type 'string | number'.
+```
+
+**Tuples**
+
+Tuples are subtypes of array. They’re a special way to type arrays that have fixed lengths, where the values at each index have specific, known types.
+
+```typescript
+let a: [number] = [1]
+// A tuple of [first name, last name, birth year]
+let b: [string, string, number] = ['malcolm', 'gladwell', 1963]
+b = ['queen', 'elizabeth', 'ii', 1926] // Error TS2322: Type 'string' is not
+// assignable to type 'number'.
+
+// Tuples also support rest elements, which you can use to type tuples with minimum lengths:
+// A list of strings with at least 1 element
+let friends: [string, ...string[]] = ['Sara', 'Tali', 'Chloe', 'Claire']
+// A heterogeneous list
+let list: [number, boolean, ...string[]] = [1, false, 'a', 'b', 'c']
+```
+
+```typescript
+//Tuples support optional elements too. Just like in object types, ? means “optional”:
+// An array of train fares, which sometimes vary depending on direction
+let trainFares: [number, number?][] = [
+   [3.75],
+   [8.25, 7.70],
+   [10.50]
+]
+// Equivalently:
+let moreTrainFares: ([number] | [number, number])[] = [
+// ...
+]
+```
+
+**Read-only arrays and tuples**
+
+```typescript
+let as: readonly number[] = [1, 2, 3] // readonly number[]
+let bs: readonly number[] = as.concat(4) // readonly number[]
+let three = bs[2] // number
+as[4] = 5 // Error TS2542: Index signature in type
+// 'readonly number[]' only permits reading.
+as.push(6) // Error TS2339: Property 'push' does not
+// exist on type 'readonly number[]'.
+```
