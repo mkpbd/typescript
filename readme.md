@@ -595,3 +595,72 @@ Besides function constructors (which you shouldn’t use unless you are being ch
 
 1. A parameter is a piece of data that a function needs to run, declared as part of a function declaration. Also called a formal parameter.
 2. An argument is a piece of data that you passed to a function when invoking it. Also called an actual parameter.
+
+**Optional and Default Parameters**
+
+Like in object and tuple types, you can use ? to mark parameters as optional.
+
+```typescript
+function log(message: string, userId?: string) {
+let time = new Date().toLocaleTimeString()
+console.log(time, message, userId || 'Not signed in')
+}
+log('Page loaded') // Logs "12:38:31 PM Page loaded Not signed in"
+log('User signed in', 'da763be') // Logs "12:38:31 PM User signed in da763be"
+
+function log(message: string, userId = 'Not signed in') {
+let time = new Date().toISOString()
+console.log(time, message, userId)
+}
+log('User clicked on a button', 'da763be')
+log('User signed out')
+
+type Context = {
+   appId?: string
+   userId?: string
+}
+function log(message: string, context: Context = {}) {
+    let time = new Date().toISOString()
+    console.log(time, message, context.userId)
+}
+```
+
+**Rest Parameters**
+
+If a function takes a list of arguments, you can of course simply pass the list in as an array:
+
+```typescript
+function sum(numbers: number[]): number {
+     return numbers.reduce((total, n) => total + n, 0)
+}
+sum([1, 2, 3]) // evaluates to 6
+
+function sumVariadic(): number {
+     return Array
+     .from(arguments)
+     .reduce((total, n) => total + n, 0)
+}
+sumVariadic(1, 2, 3) // evaluates to 6
+```
+
+![1687835279431](image/readme/1687835279431.png)
+
+```typescript
+function sumVariadicSafe(...numbers: number[]): number {
+     return numbers.reduce((total, n) => total + n, 0)
+}
+sumVariadicSafe(1, 2, 3) // evaluates to 6
+```
+
+**call, apply, and bind**
+In addition to invoking a function with **parentheses ()**, JavaScript supports at least two other ways to call a function. Take add from earlier in the chapter:
+
+```typescript
+function add3(a: number, b: number): number {
+return a + b
+}
+add3(10, 20) // evaluates to 30
+add3.apply(null, [10, 20]) // evaluates to 30
+add3.call(null, 10, 20) // evaluates to 30
+add3.bind(null, 10, 20)() // evaluates to 30
+```
