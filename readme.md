@@ -778,3 +778,26 @@ type Log = {
 
 **Overloaded function**
 A function with multiple call signatures.
+
+#### Generic type parameter
+
+A placeholder type used to enforce a type-level constraint in multiple places. Also known as polymorphic type parameter.
+
+```typescript
+type Filter = {
+    <T>(array: T[], f: (item: T) => boolean): T[]
+}
+
+let filter: Filter = (array, f) => // ...
+// (a) T is bound to number
+filter([1, 2, 3], _ => _ > 2)
+// (b) T is bound to string
+filter(['a', 'b'], _ => _ !== 'b')
+// (c) T is bound to {firstName: string}
+let names = [
+  {firstName: 'beth'},
+  {firstName: 'caitlyn'},
+  {firstName: 'xin'}
+]
+filter(names, _ => _.firstName.startsWith('b'))
+```
