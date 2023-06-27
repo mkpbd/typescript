@@ -1,0 +1,13 @@
+============== Built-in mapped types ===========
+The mapped types we derived in the last section are so useful that TypeScript ships
+with many of them built in:
+Record<Keys, Values>
+An object with keys of type Keys and values of type Values
+Partial<Object>
+Marks every field in Object as optional
+Required<Object>
+Marks every field in Object as nonoptional
+Readonly<Object>
+Marks every field in Object as read-only
+Pick<Object, Keys>
+Returns a subtype of Object, with just the given Keys
