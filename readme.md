@@ -558,3 +558,40 @@ let pink = Color.Pink // Color
 
 
 ```
+
+#### **Declaring and Invoking Functions**
+
+In JavaScript, functions are first-class objects. That means you can use them exactly like you would any other object: assign them to variables, pass them to other functions, return them from functions, assign them to objects and prototypes, write properties to them, read those properties back, and so on. There is a lot you can do with functions in JavaScript, and TypeScript models all of those things with its rich type system.
+
+```typescript
+function add(a: number, b: number) {
+    return a + b
+}
+
+function addWithReturnNumber(a: number, b: number): number {
+    return a + b
+}
+
+// Named function
+function greet(name: string) {
+    return 'hello ' + name
+}
+// Function expression
+let greet2 = function (name: string) {
+    return 'hello ' + name
+}
+// Arrow function expression
+let greet3 = (name: string) => {
+    return 'hello ' + name
+}
+// Shorthand arrow function expression
+let greet4 = (name: string) =>
+    'hello ' + name
+// Function constructor
+let greet5 = new Function('name', 'return "hello " + name')
+```
+
+Besides function constructors (which you shouldn’t use unless you are being chased by bees because they are totally unsafe),1 all of these syntaxes are supported by Type‐Script in a typesafe way, and they all follow the same rules around usually mandatory type annotations for parameters and optional annotations for return types.
+
+1. A parameter is a piece of data that a function needs to run, declared as part of a function declaration. Also called a formal parameter.
+2. An argument is a piece of data that you passed to a function when invoking it. Also called an actual parameter.
