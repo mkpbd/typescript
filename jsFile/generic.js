@@ -56,4 +56,10 @@ function call(f, ...args) {
 function fill(length, value) {
     return Array.from({ length }, () => value);
 }
-// call(fill, 10, 'a') // evaluates to an array of 10 'a's
+let myElement = new HTMLElement();
+let myEventes = {
+    target: myElement,
+    type: 'string'
+};
+//===============Type-driven development============
+// A style of programming where you sketch out type signatures first, and fill in values later.

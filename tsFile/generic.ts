@@ -125,3 +125,44 @@ function fill(length: number, value: string): string[] {
 }
 
 // call(fill, 10, 'a') // evaluates to an array of 10 'a's
+
+// let buttonEvent: MyEvent<HTMLButtonElement> = {
+//     target: myButton,
+//     type: string
+// }
+
+
+type MyEvents<T = HTMLElement> = {
+    target: T
+    type: string
+}
+
+type MyEventes<T extends HTMLElement = HTMLElement> = {
+    target: T
+    type: string
+}
+let myElement = new HTMLElement();
+let myEventes: MyEvents = {
+    target: myElement,
+    type: 'string'
+}
+
+// Good
+type MyEvent2<
+    Type extends string,
+    Target extends HTMLElement = HTMLElement,
+> = {
+    target: Target
+    type: Type
+}
+// Bad
+type MyEvent3<
+    Target extends HTMLElement = HTMLElement,
+//   Type extends string // Error TS2706: Required type parameters may
+> = { // not follow optional type parameters.
+    target: Target
+    type: 'Type'
+}
+
+//===============Type-driven development============
+// A style of programming where you sketch out type signatures first, and fill in values later.
