@@ -42,3 +42,4 @@ filter(['a', 'b'], (_: string) => _ !== 'b')
 // (c) T is bound to {firstName: string}
 
 //filter(names, _ => _.firstName.startsWith('b'))
+
