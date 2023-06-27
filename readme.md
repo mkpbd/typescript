@@ -664,3 +664,117 @@ add3.apply(null, [10, 20]) // evaluates to 30
 add3.call(null, 10, 20) // evaluates to 30
 add3.bind(null, 10, 20)() // evaluates to 30
 ```
+
+**Generator Functions**
+
+Generator functions (generators for short) are a convenient way to, well, generate a bunch of values. They give the generator’s consumer fine control over the pace at which values are produced. Because they’re lazy—that is, they only compute the next value when a consumer asks for it—they can do things that can be hard to do otherwise, like generate infinite lists.
+
+```typescript
+function* createFibonacciGenerator() {
+     let a = 0
+     let b = 1
+     while (true) {
+        yield a;
+       [a, b] = [b, a + b]
+    }
+}
+let fibonacciGenerator = createFibonacciGenerator() // IterableIterator<number>
+fibonacciGenerator.next() // evaluates to {value: 0, done: false}
+fibonacciGenerator.next() // evaluates to {value: 1, done: false}
+fibonacciGenerator.next() // evaluates to {value: 1, done: false}
+fibonacciGenerator.next() // evaluates to {value: 2, done: false}
+fibonacciGenerator.next() // evaluates to {value: 3, done: false}
+fibonacciGenerator.next() // evaluates to {value: 5, done: false}
+
+
+function* createNumbers(): IterableIterator<number> {
+    let n = 0
+     while (1) {
+    yield n++
+   }
+}
+let numbers = createNumbers()
+numbers.next() // evaluates to {value: 0, done: false}
+numbers.next() // evaluates to {value: 1, done: false}
+numbers.next() // evaluates to {value: 2, done: false}
+```
+
+**Iterators**
+
+Iterators are the flip side to generators: while generators are a way to produce a stream of values, iterators are a way to consume those values. The terminology can get pretty confusing, so let’s start with a couple of definitions.
+
+**Any object that contains a property called Symbol.iterator, whose value is a function that returns an iterator. Any object that defines a method called next, which returns an object with the properties value and done.**
+
+```typescript
+let numbers = {
+*[Symbol.iterator]() {
+    for (let n = 1; n <= 10; n++) {
+    yield n
+   }
+ }
+}
+```
+
+In other words, numbers is an iterable, and calling the generator function numbers [Symbol.iterator]() returns an iterable iterator.
+
+Not only can you define your own iterators, but you can use JavaScript’s built-in iterators for common collection types—Array, Map, Set, String,3 and so on—to do things like:
+
+```typescript
+// Iterate over an iterator with for-of
+for (let a of numbers) {
+      // Spread an iterator
+      let allNumbers = [...numbers] // number[]
+     // Destructure an iterator
+   let [one, two, ...rest] = numbers // [number, number, number[]]
+```
+
+```typescript
+
+function area(radius: number): number | null {
+    if (radius < 0) {
+        return null
+    }
+    return Math.PI * (radius ** 2)
+}
+let rr: number = 3
+let arr = area(rr)
+if (arr !== null) {
+    console.info('result:', arr)
+}
+
+// function greet(name: string)
+type Greet = (name: string) => string
+// function log(message: string, userId?: string)
+type Log = (message: string, userId?: string) => void
+// function sumVariadicSafe(...numbers: number[]): number
+type SumVariadicSafe = (...numbers: number[]) => number
+```
+
+**Contextual Typing**
+
+```typescript
+function times(
+    f: (index: number) => void,
+    n: number
+) {
+    for (let i = 0; i < n; i++) {
+        f(i)
+    }
+}
+```
+
+**Overloaded Function Types**
+
+The function type syntax we used in the last section—type Fn = (...) => ...—is a shorthand call signature. We can instead write it out more explicitly. Again taking the example of Log:
+
+```typescript
+// Shorthand call signature
+type Log = (message: string, userId?: string) => void
+// Full call signature
+type Log = {
+(message: string, userId?: string): void
+}
+```
+
+**Overloaded function**
+A function with multiple call signatures.
