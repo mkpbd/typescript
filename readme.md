@@ -106,3 +106,35 @@ let rawDataThird: RawData;
 
 
 ```
+
+### Objects
+
+Object literals
+     A set of keys and values
+  Each with their own type
+
+```typescript
+const poet = {
+  born: 1935,
+  name: "Mary Oliver",
+};
+poet["born"];
+// Type: number
+
+let poetLater: {
+  born: number;
+  name: string;
+};
+// Ok
+poetLater = {
+  born: 1935,
+  name: "Mary Oliver",
+};
+
+```
+
+Most TypeScript projects prefer using the interface keyword to describe object types. Aliased object types and interfaces are almost identical: everything in this chapter applies to interfaces as well.
+
+**Structural Typing**
+
+TypeScript’s type system is structurally typed: meaning any value that happens to satisfy a type is allowed to be used as a value of that type.
