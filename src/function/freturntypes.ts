@@ -85,3 +85,5 @@ function usesNumberToString(numberToString: NumberToString) {
 }
 usesNumberToString((input) => `${input}! Hooray!`);
 // Ok
+
+
