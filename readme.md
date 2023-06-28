@@ -47,3 +47,41 @@ rocker.toUpperCase();
 // ~~~~~~~~~~~
 // Error: 'toUpperCase' does not exist on type 'number'.
 ```
+
+Union Types
+
+Giving it an explicit string **|** null type annotation means TypeScript will allow it to be assigned values of type string:
+
+```typescript
+let thinker: string | null =null;
+if(Math.random()>0.5)
+{
+thinker ="Susanne Langer";
+// Ok
+}
+```
+
+The order of a union type declaration does not matter. You can write **boolean | numbe**r or
+**number | boolean** and TypeScript will treat both the exact same.
+
+##### Union Properties
+
+When a value is known to be a union type, TypeScript will only allow you to access member properties that exist on all possible types in the union. It will give you a type-checking error if you try to access a type that doesn't exist on all possible types.
+
+```typescript
+let thinker: string | number ;
+if (Math.random() > 0.5) {
+  thinker = "Susanne Langer";
+  // Ok
+}
+thinker.toString();
+// Ok
+thinker.toUpperCase();
+// ~~~~~~~~~~~
+// Error: Property 'toUpperCase' does not exist on type 'string | number'.
+// Property 'toUpperCase' does not exist on type 'number'.
+thinker.toFixed();
+// ~~~~~~~
+// Error: Property 'toFixed' does not exist on type 'string | number'.
+// Property 'toFixed' does not exist on type 'string'.
+```
