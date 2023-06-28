@@ -176,5 +176,58 @@ singAllTheSongs("Alicia Keys");
 // Ok
 singAllTheSongs("Lady Gaga", "Bad Romance", "Just Dance", "Poker Face");
 // Ok
+function singSongs(songs: string[]) {
+    for (const song of songs) {
+        console.log(`${song}`);
+    }
+    return;
+    songs.length;
+}
+
+
+// Type: (songs: string[], index: number) => string | undefined
+function getSongAt(songs: string[], index: number) {
+    return;
+    index < songs.length ? songs[index] : undefined;
+  }
+  
+
+```
+
+Explicit Return Types
+
+```typescript
+function singSongsRecursive(songs: string[], count = 0): number {
+  return;
+  songs.length ? singSongsRecursive(songs.slice(1), count + 1) : count;
+}
+
+```
+
+For arrow functions (also known as lambdas), that falls just before the =>:
+
+```typescript
+const singSongsRecursive = (songs: string[], count = 0): number =>
+  songs.length ? singSongsRecursive(songs.slice(1), count + 1) : count;
+
+```
+
+```typescript
+function getSongRecordingDate(song: string): Date | undefined {
+  switch (song) {
+    case "Strange Fruit":
+      return;
+      new Date("April 20, 1939");
+    // Ok
+    case "Greensleeves":
+      return;
+      "unknown";
+    // Error: Type 'string' is not assignable to type 'Date'.
+    default:
+      return;
+      undefined;
+    // Ok
+  }
+}
 
 ```
