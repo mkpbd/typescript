@@ -231,3 +231,76 @@ function getSongRecordingDate(song: string): Date | undefined {
 }
 
 ```
+
+Function Types
+
+JavaScript allows us to pass functions around as values. That means we need a way to declare the type of a parameter or variable meant to hold a function.
+Function type syntax looks similar to an arrow function, but with a type instead of the body.
+
+```typescript
+
+let inputAndOutput: (songs: string[], count?: number) => number;
+
+
+let nothingToGiven: () => string;
+
+const songs = ["Juice", "Shake It Off", "What's Up"];
+function runOnSongs(getSongAt: (index: number) => string) {
+    for (let i = 0; i < songs.length; i += 1) {
+        console.log(getSongAt(i));
+    }
+}
+function getSongAts(index: number) {
+    return `${songs[index]}`;
+}
+runOnSongs(getSongAts);
+// Ok
+
+```
+
+Function types are frequently used to describe callback parameters (parameters meant to be called as functions).
+
+**Function Type Parentheses**
+Function types may be placed anywhere that another type would be used. That includes union types.
+
+```typescript
+// Type is a function that returns a union: string | undefined
+let returnsStringOrUndefined: () => string | undefined;
+// Type is either undefined or a function that returns a string
+let maybeReturnsString: (() => string) | undefined;
+
+```
+
+**Parameter Type Inferences**
+It would be cumbersome if we had to declare parameter types for every function we write, including inline functions used as parameters.
+Fortunately, TypeScript can infer the types of parameters in a function provided to a location with a declared type. This singer variable is known to be a function
+
+```typescript
+let singer: (song: string) => string;
+singer = function (song) {
+  // Type of song: string
+  return`Singing: ${song.toUpperCase()}!`;
+  // Ok
+};
+
+```
+
+**Function Type Aliases**
+
+```typescript
+type StringToNumber = (input: string) => number;
+let stringToNumber: StringToNumber;
+stringToNumber = (input) => input.length;
+// Ok
+
+```
+
+```typescript
+type NumberToString = (input: number) => string;
+function usesNumberToString(numberToString: NumberToString) {
+  console.log(`The string is: ${numberToString(1234)}`);
+}
+usesNumberToString((input) => `${input}! Hooray!`);
+// Ok
+
+```
