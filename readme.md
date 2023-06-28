@@ -85,3 +85,24 @@ thinker.toFixed();
 // Error: Property 'toFixed' does not exist on type 'string | number'.
 // Property 'toFixed' does not exist on type 'string'.
 ```
+
+**Type Aliases**
+
+Most union types you’ll see in code will generally only have two or three constituents. However, you may sometimes find a use for longer union types that are inconvenient to type out repeatedly.
+Each of these variables can be one of four possible types
+
+```typescript
+let rawDataFirst: boolean | number | string | null | undefined;
+let rawDataSecond: boolean | number | string | null | undefined;
+let rawDataThird: boolean | number | string | null | undefined;
+
+```
+
+```typescript
+type  RawData = boolean | number | string | null | undefined;
+let rawDataFirst: RawData;
+let rawDataSecond: RawData;
+let rawDataThird: RawData;
+
+
+```
