@@ -138,3 +138,43 @@ Most TypeScript projects prefer using the interface keyword to describe object t
 **Structural Typing**
 
 TypeScript’s type system is structurally typed: meaning any value that happens to satisfy a type is allowed to be used as a value of that type.
+
+#### Functions
+
+Function arguments
+      In one end, out the other
+   As a return type
+
+Parameter refers to a function’s declaration of what it expects to receive as an argument.
+Argument refers to a value provided to a parameter in a function call. In the previous example, first and second are parameters, while strings such as "Dreams" are arguments
+
+```typescript
+function announceSong(song: string, singer?: string) {
+  console.log(`Song: ${song}`);
+  if (singer) {
+    console.log(`Singer: ${singer}`);
+  }
+}
+announceSong("Greensleeves");
+// Ok
+announceSong("Greensleeves", undefined);
+// Ok
+announceSong("Chandelier", "Sia");
+// Ok
+
+```
+
+Rest Parameters
+
+```typescript
+function singAllTheSongs(singer: string, ...songs: string[]) {
+  for (const song of songs) {
+    console.log(`${song}, by ${singer}`);
+  }
+}
+singAllTheSongs("Alicia Keys");
+// Ok
+singAllTheSongs("Lady Gaga", "Bad Romance", "Just Dance", "Poker Face");
+// Ok
+
+```

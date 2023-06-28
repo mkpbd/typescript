@@ -52,3 +52,33 @@ const poemMatch = {
     },
     name: "Lady Lazarus",
 };
+const poem = Math.random() > 0.5
+    ? {
+        name: "The Double Image",
+        pages: 7,
+    }
+    : {
+        name: "Her Kind",
+        rhymes: true,
+    };
+const poem1 = Math.random() > 0.5
+    ? {
+        name: "The Double Image",
+        pages: 7,
+        type: "pages",
+    }
+    : {
+        name: "Her Kind",
+        rhymes: true,
+        type: "rhymes",
+    };
+// Ok
+const morningGlory = {
+    author: "Fukuda Chiyo-ni",
+    kigo: "Morning Glory",
+    type: "haiku",
+};
+//   const oneArt2: ShortPoem3 = {
+//     author: "Elizabeth Bishop",
+//     type: "villanelle",
+//   };
