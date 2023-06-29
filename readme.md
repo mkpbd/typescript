@@ -499,3 +499,13 @@ function firstCharAndSize(input: string) {
 const [firstChar, size] = firstCharAndSize("Gudit");
 
 ```
+
+**Type Aliases Versus Interfaces**
+
+```typescript
+type Poet = {
+  born: number;
+  name: string;
+};
+
+```
