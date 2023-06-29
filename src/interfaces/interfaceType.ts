@@ -53,3 +53,89 @@ const pageIsh = {
     text: "Hello, world!",
 };
 
+// function and method
+interface HasBothFunctionTypes {
+    property: () => string;
+    method(): string;
+}
+const hasBoth11: HasBothFunctionTypes = {
+    property: () => "",
+    method() {
+        return ("");
+    },
+};
+hasBoth11.property();
+// Ok
+hasBoth11.method();
+// Ok
+
+
+interface OptionalReadonlyFunctions {
+    optionalProperty?: () => string;
+    optionalMethod?(): string;
+}
+
+// ========== Call Signatures ==========
+
+type FunctionAlias = (input: string) => number;
+interface CallSignature {
+    (input: string): number;
+}
+// Type: (input: string) => number
+const typedFunctionAlias: FunctionAlias = (input) => input.length;
+// Ok
+// Type: (input: string) => number
+const typedCallSignature: CallSignature = (input) => input.length;
+// Ok
+interface FunctionWithCount {
+    count: number;
+    (): void;
+}
+let hasCallCount: FunctionWithCount;
+function keepsTrackOfCalls() {
+    keepsTrackOfCalls.count += 1;
+    console.log(`I've been called ${keepsTrackOfCalls.count} times!`);
+}
+keepsTrackOfCalls.count = 0;
+hasCallCount = keepsTrackOfCalls;
+// Ok
+function doesNotHaveCount() {
+    console.log("No idea!");
+}
+
+
+// index Sing nature 
+
+interface WordCounts {
+    [i: string]: number;
+}
+const counts: WordCounts = {};
+counts.apple = 0;
+// Ok
+counts.banana = 1;
+// Ok
+interface DatesByName {
+    [i: string]: Date;
+}
+const publishDates: DatesByName = {
+    Frankenstein: new Date("1 January 1818"),
+};
+publishDates.Frankenstein;
+// Type: Date
+console.log(publishDates.Frankenstein.toString());
+// Ok
+publishDates.Beloved;
+// Type: Date, but runtime value of undefined!
+
+
+//======== Mixing properties and index signatures =======
+
+interface HistoricalNovels {
+    Oroonoko: number;
+    [i: string]: number;
+}
+// Ok
+const novels: HistoricalNovels = {
+    Outlander: 1991,
+    Oroonoko: 1688,
+};
