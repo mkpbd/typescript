@@ -337,3 +337,64 @@ function format(data: string, needle?: string, haystack?: string) {
     return needle && haystack ? data.replace(needle, haystack) : data;
 }
 ```
+
+## Array
+
+Array Types
+
+As with other variable declarations, variables meant to store arrays don’t need to have an initial value. The variables can start off undefined and receive an array value later.
+
+```typescript
+let arrayOfNumbers: number[];
+arrayOfNumbers = [4, 8, 15, 16, 23, 42];
+```
+
+Array types can also be written in a syntax like Array `<number>` called class generics. Most developers prefer the simpler number[].
+
+**Array and Function Types**
+
+Array types are an example of a syntax container where function types may need parentheses to distinguish what’s in the function type or not. Parentheses may be used to indicate which part of an annotation is the function return or the surrounding array type.
+
+```typescript
+// Type is a function that returns an array of strings
+let createStrings: () => string[];
+// Type is an array of functions that each return a string
+let stringCreators: (() => string)[];
+
+```
+
+**Union-Type Arrays**
+You can use a union type to indicate that each element of an array can be one of multiple select types.
+When using array types with unions, parentheses may need to be used to indicate which part of an annotation is the contents of the array or the surrounding union type. Using parentheses in array union types is important
+
+```typescript
+// Type is either a string or an array of numbers
+let stringOrArrayOfNumbers: string | number[];
+// Type is an array of elements that are each either a number or a string
+let arrayOfStringOrNumbers: (string | number)[];
+
+```
+
+**Evolving Any Arrays**
+
+```typescript
+// Type: any[]
+let values = [];
+// Type: string[]
+values.push("");
+// Type: (number | string)[]
+values[0] = 0;
+
+```
+
+**Multidimensional Arrays**
+
+```typescript
+let arrayOfArraysOfNumbers: number[][];
+arrayOfArraysOfNumbers = [
+  [1, 2, 3],
+  [2, 4, 6],
+  [3, 6, 9],
+];
+
+```
