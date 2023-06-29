@@ -398,3 +398,104 @@ arrayOfArraysOfNumbers = [
 ];
 
 ```
+
+**Array Members**
+
+TypeScript understands typical index-based access for retrieving members of an array to give back an element of that array's type.
+
+```typescript
+const defenders = ["Clarenza", "Dina"];
+const soldiersOrDates = ["Deborah Sampson", new Date(1782, 6, 3)];
+// Type: Date | string
+const soldierOrDate = soldiersOrDates[0];
+
+
+```
+
+**Spreads**
+Arrays can be joined together using the ... spread operator. TypeScript understands the result array will contain values that can be from either of the input arrays.
+If the input arrays are the same type, the output array will be that same type. If two arrays of different types are spread together to create a new array, the new array will be understood to be a union type array of elements that are either of the two original types.
+
+```typescript
+// Type: string[]
+const soldiers = ["Harriet Tubman", "Joan of Arc", "Khutulun"];
+// Type: number[]
+const soldierAges = [90, 19, 45];
+// Type: (string | number)[]
+const conjoined = [...soldiers, ...soldierAges];
+
+```
+
+**Spreading Rest operator ...**
+
+TypeScript recognizes and will perform type checking on the JavaScript practice of ... spreading an array as a rest parameter. Arrays used as arguments for rest parameters must have the same array type as the rest parameter.
+
+```typescript
+function logWarriors(greeting: string, ...names: string[]) {
+  for (const name of names) {
+    console.log(`${greeting}, ${name}!`);
+  }
+}
+const warriors = ["Cathay Williams", "Lozen", "Nzinga"];
+logWarriors("Hello", ...warriors);
+const birthYears = [1844, 1840, 1583];
+
+```
+
+**Tuples**
+
+Although JavaScript arrays may be any size in theory, it is sometimes useful to use an array of a fixed size—also known as a tuple. Tuple arrays have a specific known type at each index that may be more specific than a union type of all possible members of the array.
+
+The syntax to declare a tuple type looks like an array literal, but with types in place of element values. Here, the array yearAndWarrior is declared as being a tuple type with a number at index 0 and a string at index 1:
+
+```typescript
+let yearAndWarrior: [number, string];
+yearAndWarrior = [530, "Tomyris"];
+// Ok
+
+```
+
+```typescript
+// year type: number
+// warrior type: string
+let [year, warrior] = Math.random() > 0.5 ? [340, "Archidamia"] : [1828, "Rani of Jhansi"];
+
+const tupleThree: [boolean, number, string] = [false, 1583, "Nzinga"];
+const tupleTwoExact: [boolean, number] = [tupleThree[0], tupleThree[1]];
+
+
+```
+
+```typescript
+function logPair(name: string, value: number) {
+  console.log(`${name} has ${value}`);
+}
+const pairArray = ["Amage", 1];
+
+```
+
+```typescript
+function logTrio(name: string, value: [number, boolean]) {
+  console.log(`${name} has ${value[0]} (${value[1]}`);
+}
+const trios: [string, [number, boolean]][] = [
+  ["Amanitore", [1, true]],
+  ["Æthelflæd", [2, false]],
+  ["Ann E. Dunwoody", [3, false]],
+];
+trios.forEach((trio) => logTrio(...trio));
+// Ok
+
+```
+
+```typescript
+// Return type: (string | number)[]
+function firstCharAndSize(input: string) {
+  return;
+  [input[0], input.length];
+}
+// firstChar type: string | number
+// size type: string | number
+const [firstChar, size] = firstCharAndSize("Gudit");
+
+```
