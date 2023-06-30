@@ -10,4 +10,11 @@ class Engineer {
         console.log(`this is area ${area}`);
     }
 }
-new Engineer("reactangle chart Update").area;
+let rr = new Engineer("reactangle chart ");
+rr.area;
+class NamedEngineer {
+    constructor(firstName, lastName, area) {
+        this.area = area;
+        this.fullName = `${firstName} ${lastName}  ${area} `;
+    }
+}

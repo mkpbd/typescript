@@ -15,3 +15,17 @@ class Engineer {
 
 let rr = new Engineer("reactangle chart ");
 rr.area;
+
+
+
+class NamedEngineer {
+    public fullName: string;
+
+    constructor(firstName: string, lastName: string, public area: string) {
+
+        this.fullName = `${firstName} ${lastName}  ${area} `;
+    }
+}
+
+
+
