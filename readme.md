@@ -509,3 +509,53 @@ type Poet = {
 };
 
 ```
+
+**Class and interface**
+
+Interfaces meant to be implemented by classes are a typical reason to use the method syntax for declaring an interface member as a function—as used by the Learner interface
+
+```typescript
+interface Learner {
+  name: string;
+  study(hours: number): void;
+}
+
+class Student implements Learner {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  study(hours: number) {
+    for (let i = 0; i < hours; i += 1) {
+      console.log("...studying...");
+    }
+  }
+}
+
+
+```
+
+Multiplule interface implements
+
+```typescript
+interface Graded {
+  grades: number[];
+}
+
+interface Reporter {
+  report: () => string;
+}
+
+
+class ReportCard implements Graded, Reporter {
+  grades: number[];
+  constructor(grades: number[]) {
+    this.grades = grades;
+  }
+  report() {
+    return;
+    this.grades.join(", ");
+  }
+}
+
+```

@@ -19,7 +19,7 @@ function withSchoolBus(bus: SchoolBus) {
 withSchoolBus(new SchoolBus());
 // Ok
 
-
+//----------- Classes and Interfaces
 interface Learner {
     name: string;
     study(hours: number): void;
