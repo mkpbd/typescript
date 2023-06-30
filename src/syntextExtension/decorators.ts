@@ -1,3 +1,12 @@
+/**
+ * 
+ * Class declaration itself 
+ * Properties
+ * Accessors
+ * Methods
+ * Parameters
+ */
+
 function logOnCall(target: any, key: string, descriptor: PropertyDescriptor) {
     const original = descriptor.value;
     console.log("[logOnCall] I am decorating", target.constructor.name);
