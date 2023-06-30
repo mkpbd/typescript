@@ -78,3 +78,18 @@ JSON.parse(rawData);
 JSON.parse(rawData);
 // Type: ["grace", "frankie"]
 JSON.parse(rawData);
+function describePreference(preference) {
+    switch (preference) {
+        case "maybe":
+            return "I suppose...";
+        case "no":
+            return "No thanks.";
+        case "yes":
+            return "Yes please!";
+    }
+}
+// Type: { movie: string, standup: string }
+const preferencesMutable = {
+    movie: "maybe",
+    standup: "yes",
+};
