@@ -9,3 +9,9 @@ p.textContent = "Hello, World!";
 app?.appendChild(p);
 // =============== form
 const form = document.getElementById("form");
+const form1 = document.querySelector("form");
+const form2 = document.querySelector("form");
+const selectElement = document.querySelector("select");
+const radioElement = document.querySelector("#rr");
+// const checkboxElement = document.querySelector("checkbox") as HTMLCheckboxElement;
+const checkboxElement = document.querySelector("checkbox");

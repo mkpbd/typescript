@@ -11,3 +11,12 @@ app?.appendChild(p);
 // =============== form
 
 const form = document.getElementById("form")!;
+
+const form1 = document.querySelector("form") as HTMLFormElement;
+const form2 = <HTMLFormElement>document.querySelector("form");
+
+const selectElement = document.querySelector("select") as HTMLSelectElement;
+
+const radioElement = document.querySelector("#rr") as HTMLInputElement;
+// const checkboxElement = document.querySelector("checkbox") as HTMLCheckboxElement;
+const checkboxElement = document.querySelector("checkbox")!;
