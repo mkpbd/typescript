@@ -13,3 +13,12 @@ function printPersonAnotation(person) {
 }
 // all works 
 printPersonAnotation(me);
+function printPerson(person) {
+    console.log(person.name, person.age);
+}
+const user = {
+    name: "Stefan",
+    age: 40,
+    id: 815
+};
+printPerson(user); // works

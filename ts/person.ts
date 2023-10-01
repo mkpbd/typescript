@@ -38,3 +38,31 @@ function printPersonAnotation(person: PersonTypeAnnotation) {
 
 // all works 
 printPersonAnotation(me);
+
+
+
+type Person1 = {
+    name: string,
+    age: number
+}
+type User = {
+    name: string,
+    age: number,
+    id: number
+}
+function printPerson(person: Person1) {
+    console.log(person.name, person.age)
+}
+const user: User = {
+    name: "Stefan",
+    age: 40,
+    id: 815
+}
+printPerson(user) // works
+
+//==================== unknown Data Type =================
+
+let unknownDataType: unknown;
+unknownDataType = 'hello world';
+unknownDataType = 10;
+
