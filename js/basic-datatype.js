@@ -16,6 +16,10 @@ let floatNumber = 20.5;
 let hexierDecimalNumber = 0xff;
 let octaNumber = 0o335;
 let binaryNumber = 0b1010;
+let decimal = 6;
+let hex = 0xf00d;
+let binary = 0b1010;
+let octal = 0o744;
 //==============  undefined 
 let noDataAssign = undefined;
 //================== null data 
@@ -27,6 +31,10 @@ let friendsNameList;
 friendsNameList = ["kamal", "jamal", 'tomal', `romal`, 'others'];
 console.log(friendsNameList);
 let numberList = [6, 7, 8, 0xff, 0o234, 0b1011100];
+//============== UNION Types ===============
+let unionTypes;
+unionTypes = 'kamal';
+unionTypes = 440;
 // ==============  tuple data types ==============
 let emplyee = ["mostofa kamal", 1];
 // add element of tuple 
@@ -110,3 +118,18 @@ var PrintMediaMapping;
 PrintMediaMapping.Magazine; // returns  3
 PrintMediaMapping["Magazine"]; // returns  3
 PrintMediaMapping[3]; // returns  Magazine
+//============================= ypeScript allows us to use more than one data type for a variable or a function parameter. This is called union type. =======
+let code = 'test code ';
+code = 30;
+code = 'test';
+let empId;
+empId = 'esm23456kfaafadf3456';
+empId = 33333;
+function printCoord(pt) {
+    console.log(pt.x + " " + pt.y);
+}
+printCoord({ x: 10, y: 20 });
+function sanitizeInput(str) {
+    return (str);
+}
+sanitizeInput("hllo kamal");

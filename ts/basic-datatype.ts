@@ -28,6 +28,10 @@ let hexierDecimalNumber : number = 0xff;
 let octaNumber : number =  0o335;
 let binaryNumber : number = 0b1010;
 
+let decimal: number = 6;
+let hex: number = 0xf00d;
+let binary: number = 0b1010;
+let octal: number = 0o744;
 
 
 //==============  undefined 
@@ -52,6 +56,13 @@ friendsNameList=["kamal", "jamal", 'tomal', `romal`, 'others'];
 console.log(friendsNameList);
 
 let numberList : number[]  = [6,7,8,0xff, 0o234, 0b1011100];
+
+
+//============== UNION Types ===============
+
+    let unionTypes : (string | number)  ;
+    unionTypes = 'kamal';
+    unionTypes = 440;
 
 // ==============  tuple data types ==============
 
@@ -160,3 +171,41 @@ enum PrintMediaMapping {
   PrintMediaMapping.Magazine;   // returns  3
   PrintMediaMapping["Magazine"];// returns  3
   PrintMediaMapping[3];         // returns  Magazine
+
+  //============================= ypeScript allows us to use more than one data type for a variable or a function parameter. This is called union type. =======
+
+let code :(string | number) = 'test code ';
+ code = 30;
+ code = 'test';
+
+ let empId : (string | number);
+ empId = 'esm23456kfaafadf3456';
+ empId = 33333;
+
+
+ //================================= Type Aliases ==============================
+
+ type Point = {
+    x: number;
+    y: number;
+  };
+   
+
+  function printCoord(pt:Point){
+
+     console.log(pt.x + " "+ pt.y);
+  }
+
+  printCoord({x:10, y:20})
+
+
+  type ID = number | string;
+
+
+  type UserInputSanitizedString  = string;
+
+  function sanitizeInput(str: string): UserInputSanitizedString {
+    return (str);
+  }
+   
+  sanitizeInput("hllo kamal");
