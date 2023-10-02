@@ -138,17 +138,17 @@ type Triangle1 = {
     y: number,
     kind: "triangle",
 };
-type Shape2 = Circle1 | Triangle1| Square1;
+type Shape2 = Circle1 | Triangle1 | Square1;
 
 function area1(shape: Shape2) {
-    switch(shape.kind) {
-    case "circle": // shape is Circle
-    return Math.PI * shape.radius * shape.radius;
-    case "triangle": // shape is Triangle
-    return (shape.x * shape.y) / 2;
-    case "square": // shape is Square
-    return shape.x * shape.x;
-    default:
-    throw Error("not possible");
+    switch (shape.kind) {
+        case "circle": // shape is Circle
+            return Math.PI * shape.radius * shape.radius;
+        case "triangle": // shape is Triangle
+            return (shape.x * shape.y) / 2;
+        case "square": // shape is Square
+            return shape.x * shape.x;
+        default:
+            throw Error("not possible");
     }
-    }
+}
