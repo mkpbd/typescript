@@ -22,3 +22,7 @@ const user = {
     id: 815
 };
 printPerson(user); // works
+//==================== unknown Data Type =================
+let unknownDataType;
+unknownDataType = 'hello world';
+unknownDataType = 10;
