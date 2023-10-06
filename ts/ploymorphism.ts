@@ -64,15 +64,12 @@ function loggingIdentity<Type>(arg: Type): Type {
     return arg;
 }
 
-
 loggingIdentity<string>("hello banadesh");
-
 
 function loggingIdentity2<Type>(arg: Array<Type>): Array<Type> {
     console.log(arg.length);
     return arg;
 }
-
 
 // Generic  Types
 
@@ -81,11 +78,18 @@ function identity1<Type>(arg: Type): Type {
     return arg;
 }
 
-
 let myItems: <Type>(arg: Type) => Type = identity1
 
 function identity3<Input>(arg: Input): Input {
     return arg;
 }
-
 let myIdentity: <Input>(arg: Input) => Input = identity;
+let myIdentity2: { <Input>(arg: Input): Input } = identity;
+function map<T, U>(array: T[], f: (item: T) => U): U[] {
+    let result = []
+    for (let i = 0; i < array.length; i++) {
+        result[i] = f(array[i])
+    }
+    return result
+}
+
