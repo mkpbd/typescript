@@ -9,7 +9,7 @@ inference makes it really cumbersome to work with.
 // const person: [string, number] = ["Stefan", 40];
 // const person: [string, number] = ["Stefan"]; // Error
 
-const personTuple : [namess:string, age:number] = ["Stefan", 40]; // name and age
+const personTuple: [namess: string, age: number] = ["Stefan", 40]; // name and age
 
 const [namess, age] = personTuple;
 console.log(name); // Stefan
@@ -18,3 +18,14 @@ console.log(age); // 40
 const [anotherName, anotherAge] = personTuple;
 console.log(anotherName); // Stefan
 console.log(anotherAge); // 40
+
+// Type aliases for  tuple types
+
+type TtuplePerson = [name: string, age: number];
+
+// Tuple types can also be written with tuple types:
+function hello1(...args: [name: string, msg: string]): void {
+  // ...
+}
+
+
