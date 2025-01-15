@@ -28,3 +28,10 @@ const button = document.querySelector("button");
 button?.addEventListener("click", function () {
   this.classList.toggle("clicked");
 });
+
+
+const button1 = document.querySelector("button");
+button?.addEventListener("click", handleToggle);
+function handleToggle(this: HTMLButtonElement) {
+this.classList.toggle("clicked");
+}
