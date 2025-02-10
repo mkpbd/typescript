@@ -144,3 +144,8 @@ function areass(shape: Shape4) {
       throw Error("not possible");
   }
 }
+
+function assertNever(value: never) {
+  console.error("Unknown value", value);
+  throw Error("Not possible");
+}
