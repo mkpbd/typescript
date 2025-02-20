@@ -89,28 +89,104 @@ interface UserInterface {
 }
 
 
-interface AutohrInterface extends UserInterface{
-    type : "authorise",
-    signInuser : string
+interface AutohrInterface extends UserInterface {
+    type: "authorise",
+    signInuser: string
 }
 
-interface  LogedInInterface  extends UserInterface{
-    type : "logedIn",
+interface LogedInInterface extends UserInterface {
+    type: "logedIn",
     logedInUser: string
 }
 
 // Check Types Guird 
 
 
-function  onOtherWiebsite(user : UserInterface){
+function onOtherWiebsite(user: UserInterface) {
 
-    if(user.type === 'authorise'){
+    if (user.type === 'authorise') {
 
         return (user as AutohrInterface).signInuser
     }
 
-    if(user.type === 'logedIn'){
+    if (user.type === 'logedIn') {
 
-        return (user as LogedInInterface ).logedInUser
+        return (user as LogedInInterface).logedInUser
+    }
+}
+
+// other way 
+
+
+function isAuthenticatdUser(user: UserInterface): user is AutohrInterface {
+
+    return user.type === "authorise";
+}
+
+
+function isLogdInUser(user: UserInterface): user is LogedInInterface {
+
+    return user.type === 'logedIn';
+}
+
+function onWebsiteSince(user: UserInterface): number {
+    if (isAuthenticatdUser(user)) {
+        // this is inferred as a LoggedUser
+        return user.signInuser.length;
+    } else if (isLogdInUser(user)) {
+        // this is inferred as an AnonymousUser
+        return user.logedInUser.length;
+    }
+    // TS still doesn't know every possibility was covered
+    // so we have to return something here
+    return 0;
+}
+
+
+
+
+interface BaseUser {
+    name: string;
+    // other fields
+}
+interface AuthenticatedUser extends BaseUser {
+    type: 'authenticated';
+    loggedSince: number;
+}
+interface AnonymousUser extends BaseUser {
+    type: 'anonymous';
+    visitingSince: number;
+}
+type User1 = AuthenticatedUser | AnonymousUser;
+function onWebsiteSince1(user: User1): number {
+    if (user.type === 'authenticated') {
+        // this is inferred as a LoggedUser
+        return user.loggedSince;
+    } else {
+        // this is narrowed as an AnonymousUser
+        // without even testing the type!
+        return user.visitingSince;
+    }
+    // no need to return a default value
+    // as TS knows that we covered every possibility!
+}
+
+
+
+interface AdminUser extends BaseUser {
+    type: 'admin';
+    adminSince: number;
+}
+type User2 = AuthenticatedUser | AnonymousUser | AdminUser;
+function onWebsiteSince2(user: User2): number {
+    switch (user.type) {
+        case 'authenticated':
+            return user.loggedSince;
+        case 'anonymous':
+            return user.visitingSince;
+        case 'admin':
+            // without this case, we could not even compile the code
+            // as TS would complain that all possible paths are not returning a  value
+            return user.adminSince;
     }
 }
