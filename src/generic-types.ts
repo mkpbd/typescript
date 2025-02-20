@@ -42,3 +42,7 @@ console.log(getPonyModelKeys(pony,'color')); // purple
     }
 
     getPonyModelGeneric(pony,'name') 
+
+
+
+    
