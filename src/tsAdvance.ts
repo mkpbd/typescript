@@ -98,3 +98,19 @@ interface  LogedInInterface  extends UserInterface{
     type : "logedIn",
     logedInUser: string
 }
+
+// Check Types Guird 
+
+
+function  onOtherWiebsite(user : UserInterface){
+
+    if(user.type === 'authorise'){
+
+        return (user as AutohrInterface).signInuser
+    }
+
+    if(user.type === 'logedIn'){
+
+        return (user as LogedInInterface ).logedInUser
+    }
+}
