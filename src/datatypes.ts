@@ -18,3 +18,12 @@ let funllName : string = 'mostofa kamal';
 let story:string = 'live is not '
 let  sentace : string = `hello my name is ${funllName} and my age  ${age}`;
 
+// represent big number 
+
+// const bigNumber: bigint = 9007199254740991n;
+// const hugeNumber = BigInt(9007199254740991); // Alternative syntax
+
+
+
+
+
